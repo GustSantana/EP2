@@ -23,7 +23,7 @@ int BancoDeRegistradores::getValor(int registrador){
 
 void BancoDeRegistradores::setValor(int registrador, int valor){
     if (registrador < 0 || registrador >= 32) 
-        throw new logic_error("");///////////////////////////////////////////////
+        throw new logic_error("");////////////////////////////////////////////
     else 
         this->registrador[registrador] = valor;
 }
