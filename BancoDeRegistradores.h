@@ -11,11 +11,11 @@ private:
     int valor;
 
 public:
-    BancoDeRegistradores();
-    virtual ~BancoDeRegistradores();
-    virtual int getValor(int registrador);
-    virtual void setValor(int registrador, int valor);
-    virtual void imprimir();
+    BancoDeRegistradores(); 
+    virtual ~BancoDeRegistradores(); 
+    virtual int getValor(int registrador); 
+    virtual void setValor(int registrador, int valor); 
+    virtual void imprimir(); 
 
 };
 
