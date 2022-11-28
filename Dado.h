@@ -2,6 +2,7 @@
 #define DADO_H
 
 #include <string>
+#include <iostream> 
 
 using namespace std;
 
@@ -14,7 +15,6 @@ public:
     virtual ~Dado();
     virtual int getValor();
     virtual void imprimir(); 
-
 };
 
 #endif  // DADO_H

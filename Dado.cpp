@@ -1,5 +1,4 @@
 #include "Dado.h"
-#include <iostream> 
 
 Dado::Dado(int valor) : valor (valor) {
 }

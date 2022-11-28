@@ -25,7 +25,7 @@ public:
     static const int FUNCAO_SUB = 34;
     static const int FUNCAO_MULT = 24;
     static const int FUNCAO_DIV = 26;
-
+    
     static Instrucao* criarLW(int destino, int imediato);
     static Instrucao* criarSW(int destino, int imediato);
     static Instrucao* criarJ(int imediato);
