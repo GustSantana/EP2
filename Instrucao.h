@@ -1,5 +1,7 @@
 #ifndef INSTRUCAO_H
 #define INSTRUCAO_H
+
+#include <iostream> 
 #include "Dado.h"
 
 using namespace std;

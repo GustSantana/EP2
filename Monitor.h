@@ -3,13 +3,17 @@
 
 #include <string>
 #include <iostream> 
+#include "Dispositivo.h"
 
 using namespace std;
 
-class Monitor {
+class Monitor : public Dispositivo {
 public:
     Monitor();
-    virtual ~Monitor(); 
+    virtual ~Monitor();
+    Dado* ler(); 
+    virtual void escrever(Dado* d);
+
 };
 
 #endif  // MONITOR_H

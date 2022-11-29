@@ -1,12 +1,10 @@
 #include "Instrucao.h"
-#include <iostream> 
 
 Instrucao::Instrucao(int opcode, int origem1, int origem2, int destino, int imediato, int funcao) : Dado (opcode), 
                     origem1 (origem1), origem2 (origem2), destino (destino), imediato (imediato), funcao(funcao){
 }
 
 Instrucao::~Instrucao(){
-
 }
 
 int Instrucao::getOpcode(){
@@ -32,11 +30,12 @@ int Instrucao::getImediato(){
 int Instrucao::getFuncao(){
     return funcao;
 }
-
+/*
 void Instrucao::imprimir(){
     cout << 'Instrucao' << opcode; 
 }
-
+*/
+/*
 Instrucao* criarLW(int destino, int imediato){
 
 }
@@ -72,3 +71,4 @@ Instrucao* criarMULT(int origem1, int origem2){
 Instrucao* criarDIV(int origem1, int origem2){
 
 }
+*/

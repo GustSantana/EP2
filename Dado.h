@@ -15,6 +15,7 @@ public:
     virtual ~Dado();
     virtual int getValor();
     virtual void imprimir(); 
+    
 };
 
 #endif  // DADO_H
