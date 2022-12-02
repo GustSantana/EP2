@@ -1,6 +1,6 @@
 #include "UnidadeDeControle.h"
 
-UnidadeDeControle::UnidadeDeControleUnidadeDeControle(BancoDeRegistradores* registradores, Memoria* memoria) :
+UnidadeDeControle::UnidadeDeControle(BancoDeRegistradores* registradores, Memoria* memoria) :
                                     registradores(registradores), memoria(memoria){
     PC = 0;
 }
