@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class BancoDeRegistradores{
+class BancoDeRegistradores {
 private:
     int* registrador;
     int valor;

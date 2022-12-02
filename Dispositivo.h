@@ -1,9 +1,9 @@
 #ifndef DISPOSITIVO_H
 #define DISPOSITIVO_H
 
+#include "Dado.h"
 #include <string>
 #include <iostream>
-#include "Dado.h"
 
 using namespace std;
 

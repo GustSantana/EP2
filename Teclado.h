@@ -2,17 +2,21 @@
 #define TECLADO_H
 
 #include <string>
-#include <iostream> 
+#include <iostream>
+#include "Dispositivo.h" 
 
 using namespace std;
 
-class Teclado {
+class Teclado : public Dispositivo {
 private:
-    int valor;
-
+    int numero;
+    
 public:
     Teclado();
     virtual ~Teclado();
+    virtual Dado* ler(); 
+    virtual void escrever(Dado* d);
+
 };
 
 #endif  // TECLADO_H

@@ -46,6 +46,8 @@ public:
     virtual int getImediato();
     virtual int getFuncao();
 
+    virtual void imprimir();
+
 };
 
 #endif  // INSTRUCAO_H

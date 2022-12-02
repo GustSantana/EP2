@@ -4,9 +4,9 @@
 
 BancoDeRegistradores::BancoDeRegistradores(){
     registrador = new int[QUANTIDADE_REGISTRADORES];
-
-    for(int i = 0; i < QUANTIDADE_REGISTRADORES; i++)
+    for(int i = 0; i < QUANTIDADE_REGISTRADORES; i++){
         registrador[i] = 0;
+    }
 }
 
 BancoDeRegistradores::~BancoDeRegistradores(){
@@ -14,18 +14,30 @@ BancoDeRegistradores::~BancoDeRegistradores(){
 }
 
 int BancoDeRegistradores::getValor(int registrador){
-    if (registrador < 0 || registrador >= 32) 
-        throw new logic_error("");///////////////////////////////////////////////
+    if(registrador == 0){
+        this->registrador[0] = 0;
+    }
 
-    else
+    else if (registrador < 0 || registrador >= 32){
+        throw new logic_error("logic_error");
+    }
+        
+    else {
         return this->registrador[registrador];
+    }
 }
 
 void BancoDeRegistradores::setValor(int registrador, int valor){
-    if (registrador < 0 || registrador >= 32) 
-        throw new logic_error("");////////////////////////////////////////////
-    else 
+    if(registrador == 0){
+    }
+
+    else if (registrador < 0 || registrador >= 32){
+        throw new logic_error("logic_error");
+    }
+
+    else {
         this->registrador[registrador] = valor;
+    }       
 }
 
 void BancoDeRegistradores::imprimir(){

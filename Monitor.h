@@ -11,7 +11,7 @@ class Monitor : public Dispositivo {
 public:
     Monitor();
     virtual ~Monitor();
-    Dado* ler(); 
+    virtual Dado* ler(); 
     virtual void escrever(Dado* d);
 
 };
