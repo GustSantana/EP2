@@ -1,4 +1,4 @@
-#include "UnidadeDeControle.h"
+/*#include "UnidadeDeControle.h"
 
 #include <iostream>
 
@@ -108,3 +108,4 @@ void UnidadeDeControle::executarInstrucao(){
     && (instrucoes->ler(PC) != NULL))
         PC++;
 }
+*/

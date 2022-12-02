@@ -1,4 +1,4 @@
-#ifndef UNIDADE_CONTROLE_H
+/*#ifndef UNIDADE_CONTROLE_H
 #define UNIDADE_CONTROLE_H
 
 #include "BancoDeRegistradores.h"
@@ -26,4 +26,4 @@ public:
 
 };
 
-#endif // UNIDADE_CONTROLE_H
+#endif // UNIDADE_CONTROLE_H*/
