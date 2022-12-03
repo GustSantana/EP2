@@ -10,7 +10,8 @@ Dado* TecladoDeChar::ler(){
     cout << "Digite um caractere: ";
     cin >> caractere;
 
-    Dado *d1 = new Dado(caractere);
+    int n = (int) caractere;
+    Dado *d1 = new Dado(n);
     return d1;
 }
 

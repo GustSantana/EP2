@@ -13,5 +13,6 @@ Dado* MonitorDeChar::ler(){
 }
 
 void MonitorDeChar::escrever(Dado* d){
-    cout << (char)d;
+    char letra = (char) d->getValor();
+    cout << letra;
 }
