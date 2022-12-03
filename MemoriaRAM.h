@@ -2,6 +2,7 @@
 #define MEMORIA_RAM_H
 
 #include "Memoria.h"
+#include "Instrucao.h"
 #include <iostream>
 #include <list>
 
