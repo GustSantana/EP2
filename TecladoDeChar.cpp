@@ -8,10 +8,10 @@ TecladoDeChar::~TecladoDeChar(){
 
 Dado* TecladoDeChar::ler(){
     cout << "Digite um caractere: ";
-    cin >> palavra;
+    cin >> caractere;
 
-    //Dado *d1 = new Dado(palavra);
-    //return d1;
+    Dado *d1 = new Dado(caractere);
+    return d1;
 }
 
 void TecladoDeChar::escrever(Dado* d){

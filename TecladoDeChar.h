@@ -4,12 +4,13 @@
 #include <string>
 #include <iostream>
 #include "Teclado.h" 
+#include "Dado.h"
 
 using namespace std;
 
 class TecladoDeChar : public Teclado {
 private:
-    char palavra;
+    char caractere;
     
 public:
     TecladoDeChar();
