@@ -15,7 +15,7 @@ BancoDeRegistradores::~BancoDeRegistradores(){
 
 int BancoDeRegistradores::getValor(int registrador){
     if(registrador == 0){
-        this->registrador[0] = 0;
+        return 0;
     }
 
     else if (registrador < 0 || registrador >= 32){
@@ -28,10 +28,7 @@ int BancoDeRegistradores::getValor(int registrador){
 }
 
 void BancoDeRegistradores::setValor(int registrador, int valor){
-    if(registrador == 0){
-    }
-
-    else if (registrador < 0 || registrador >= 32){
+    if (registrador < 0 || registrador >= 32){
         throw new logic_error("logic_error");
     }
 

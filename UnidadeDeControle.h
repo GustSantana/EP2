@@ -5,6 +5,7 @@
 #include <iostream>
 #include "Memoria.h"
 #include "BancoDeRegistradores.h"
+#include "Instrucao.h"
 
 using namespace std;
 
