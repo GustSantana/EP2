@@ -35,20 +35,20 @@ void UnidadeDeControle::executarInstrucao(){
 
     int verificaOP = instrucao->getOpcode();
 
-    if (verificaOP == TIPO_R){
-            if(instrucao->getFuncao() == FUNCAO_ADD)
+    if (verificaOP == Instrucao::TIPO_R){
+            if(instrucao->getFuncao() == Instrucao::FUNCAO_ADD)
                 registradores->setValor(instrucao->getDestino(), registradores->getValor(instrucao->getOrigem1()) + registradores->getValor(instrucao->getOrigem2()));
                 return;
 
-            if(instrucao->getFuncao() == FUNCAO_SUB)
+            if(instrucao->getFuncao() == Instrucao::FUNCAO_SUB)
                 registradores->setValor(instrucao->getDestino(), registradores->getValor(instrucao->getOrigem1()) - registradores->getValor(instrucao->getOrigem2()));
                 return;
 
-            if(instrucao->getFuncao() == FUNCAO_MULT)
+            if(instrucao->getFuncao() == Instrucao::FUNCAO_MULT)
                 registradores->setValor(24, registradores->getValor(instrucao->getOrigem1()) * registradores->getValor(instrucao->getOrigem2()));
                 return;
 
-            if(instrucao->getFuncao() == FUNCAO_DIV){
+            if(instrucao->getFuncao() == Instrucao::FUNCAO_DIV){
                 registradores->setValor(24, registradores->getValor(instrucao->getOrigem1()) / registradores->getValor(instrucao->getOrigem2()));
                 registradores->setValor(25, registradores->getValor(instrucao->getOrigem1()) % registradores->getValor(instrucao->getOrigem2()));
                 return;
@@ -57,7 +57,7 @@ void UnidadeDeControle::executarInstrucao(){
     }
 
 
-    if (verificaOP == LW) {
+    if (verificaOP == Instrucao::LW) {
         if(memoria->ler(instrucao->getImediato()) == NULL)
             registradores->setValor(instrucao->getDestino(), 0);
 
@@ -67,14 +67,14 @@ void UnidadeDeControle::executarInstrucao(){
     }
 
 
-    if (verificaOP == SW) {
+    if (verificaOP == Instrucao::SW) {
         Dado* dado = new Dado(registradores->getValor(instrucao->getDestino()));
         memoria->escrever(instrucao->getImediato(), dado);
         PC++;
     }
 
 
-    if (verificaOP == BNE) {
+    if (verificaOP == Instrucao::BNE) {
         if(registradores->getValor(instrucao->getOrigem1()) != registradores->getValor(instrucao->getOrigem2()))
             PC = registradores->getValor(instrucao->getImediato());
         else
@@ -82,7 +82,7 @@ void UnidadeDeControle::executarInstrucao(){
     }
 
 
-    if (verificaOP == BEQ) {
+    if (verificaOP == Instrucao::BEQ) {
         if(registradores->getValor(instrucao->getOrigem1()) == registradores->getValor(instrucao->getOrigem2()))
             PC = registradores->getValor(instrucao->getImediato()); 
         else
@@ -90,10 +90,16 @@ void UnidadeDeControle::executarInstrucao(){
     }
 
 
-    if (verificaOP == J){
+    if (verificaOP == Instrucao::J){
         PC = registradores->getValor(instrucao->getImediato()); 
     }
 
-  if((verificaOP != TIPO_R) && (verificaOP != LW) && (verificaOP != SW) && (verificaOP != BNE) && (verificaOP != BEQ) && (verificaOP != J) && (instrucao != NULL))
+  if((verificaOP != Instrucao::TIPO_R) &&
+  (verificaOP != Instrucao::LW) && 
+  (verificaOP != Instrucao::SW) && 
+  (verificaOP != Instrucao::BNE) && 
+  (verificaOP != Instrucao::BEQ) && 
+  (verificaOP != Instrucao::J) && 
+  (instrucao != NULL))
         PC++;
 }
