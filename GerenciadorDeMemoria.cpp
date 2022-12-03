@@ -63,5 +63,51 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
 }
 
 void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
+    ofstream escrever;
+    escrever.open (arquivo, ios_base::app);
+    for(int i = 0; i < m->getTamanho(); i++){
+        if(m->ler(i) == NULL)
+            escrever << "-" << endl;
 
+        Instrucao *instrucao = dynamic_cast<Instrucao*>(m->ler(i));
+        if(instrucao == NULL)
+            escrever << "D " << m->ler(i)->getValor() << endl;
+        else{
+            if(instrucao->getOpcode() == Instrucao::LW)
+                escrever << "LW " << instrucao->getDestino() << " " << instrucao->getImediato() << endl;
+
+            if(instrucao->getOpcode() == Instrucao::SW)
+                escrever << "SW " << instrucao->getDestino() << " " << instrucao->getImediato() <<  endl;
+
+            if(instrucao->getOpcode() == Instrucao::J)
+                escrever << "J " << instrucao->getImediato() << endl;
+            
+            if(instrucao->getOpcode() == Instrucao::BNE)
+                escrever << "BNE " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << " " << instrucao->getImediato() << endl;
+            
+            if(instrucao->getOpcode() == Instrucao::BEQ)
+                escrever << "BEQ " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << " " << instrucao->getImediato() << endl;
+            
+            if(instrucao->getOpcode() == Instrucao::TIPO_R){
+                if(instrucao->getFuncao() == Instrucao::FUNCAO_ADD)
+                    escrever << "ADD " << instrucao->getDestino() << " " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                
+                if(instrucao->getFuncao() == Instrucao::FUNCAO_SUB)
+                    escrever << "SUB " << instrucao->getDestino() << " " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                
+                if(instrucao->getFuncao() == Instrucao::FUNCAO_MULT)
+                    escrever << "MULT " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
+
+                if(instrucao->getFuncao() == Instrucao::FUNCAO_DIV)
+                    escrever << "DIV " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
+            }
+            if(escrever.fail())
+                throw new runtime_error ("runtime_error");
+            
+            int verificaOP = instrucao->getOpcode();
+            if((verificaOP != Instrucao::TIPO_R) && (verificaOP != Instrucao::LW) && (verificaOP != Instrucao::SW) && 
+            (verificaOP != Instrucao::BNE) && (verificaOP != Instrucao::BEQ) && (verificaOP != Instrucao::J) && (verificaOP != NULL))
+                throw new runtime_error ("runtime_error");
+        }
+    }
 }
