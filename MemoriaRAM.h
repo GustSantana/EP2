@@ -21,6 +21,7 @@ class MemoriaRam : public Memoria {
         int getTamanho(); 
         Dado* ler(int posicao);
         void escrever(int posicao, Dado* d);
+        void imprimir();
 };
 
 #endif //MEMORIA_RAM_H

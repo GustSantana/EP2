@@ -77,5 +77,5 @@ Instrucao* Instrucao::criarDIV(int origem1, int origem2){
 }
 
 void Instrucao::imprimir(){
-    cout << 'Instrucao' << opcode; 
+    cout << "Instrucao " << opcode; 
 }
