@@ -7,15 +7,15 @@
 
 using namespace std;
 
-class MemoriaRam : public Memoria {
+class MemoriaRAM : public Memoria {
     private:
     int tamanho;
     int posicao;
     Dado** vetorDados;
 
     public:
-        MemoriaRam(int tamanho);
-        virtual ~MemoriaRam();
+        MemoriaRAM(int tamanho);
+        virtual ~MemoriaRAM();
         virtual void escrever(list<Dado*>* dados); 
 
         int getTamanho(); 

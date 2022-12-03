@@ -1,22 +1,22 @@
 #include "MemoriaRAM.h"
 
-MemoriaRam::MemoriaRam(int tamanho) : tamanho(tamanho){
+MemoriaRAM::MemoriaRAM(int tamanho) : tamanho(tamanho){
     this->vetorDados = new Dado*[tamanho];
     for (int i = 0; i < tamanho; i++)
         vetorDados[i] = NULL;
 }
 
-MemoriaRam::~MemoriaRam() {
+MemoriaRAM::~MemoriaRAM() {
     for (int i = 0; i < tamanho; i++)
         delete vetorDados[i];
     delete[] vetorDados;
 }
 
-int MemoriaRam::getTamanho(){
+int MemoriaRAM::getTamanho(){
     return this->tamanho;
 }
 
-Dado* MemoriaRam::ler(int posicao) {
+Dado* MemoriaRAM::ler(int posicao) {
     if (posicao < 0 || posicao >= tamanho)
         throw new logic_error("logic_error");
 
@@ -24,7 +24,7 @@ Dado* MemoriaRam::ler(int posicao) {
         return vetorDados[posicao];
 }
 
-void MemoriaRam::escrever(int posicao, Dado* d){
+void MemoriaRAM::escrever(int posicao, Dado* d){
     if (posicao < 0 || posicao >= tamanho)
         throw new logic_error("logic_error");
 
@@ -34,7 +34,7 @@ void MemoriaRam::escrever(int posicao, Dado* d){
     vetorDados[posicao] = d;
 }
 
-void MemoriaRam::escrever(list<Dado*>* dados){
+void MemoriaRAM::escrever(list<Dado*>* dados){
     if (dados->size() > this->tamanho)
         throw new logic_error("logic_error");
 
@@ -47,7 +47,7 @@ void MemoriaRam::escrever(list<Dado*>* dados){
     }
 }
 
-void MemoriaRam::imprimir(){
+void MemoriaRAM::imprimir(){
     for (int i = 0; i < tamanho; i++){
         if (vetorDados[i] == NULL)
             cout << i << ": " << "-" << endl;
