@@ -5,6 +5,9 @@
         "memory_resource": "cpp",
         "random": "cpp",
         "type_traits": "cpp",
-        "string": "cpp"
+        "string": "cpp",
+        "stdexcept": "cpp",
+        "cstddef": "cpp",
+        "istream": "cpp"
     }
 }

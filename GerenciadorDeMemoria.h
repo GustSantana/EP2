@@ -2,7 +2,9 @@
 #define GERENCIADOR_DE_MEMORIA_H
 
 #include <iostream> 
+#include <fstream>
 #include "MemoriaRAM.h"
+#include "Instrucao.h"
 
 using namespace std;
 
