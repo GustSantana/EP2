@@ -115,7 +115,7 @@ while(escolha == -1) {
         try {
             controle->executarInstrucao();
         }
-        catch  (invalid_argument *e) {
+        catch  (logic_error *e) {
         cout << e->what();
         return 0;
         }
