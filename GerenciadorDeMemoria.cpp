@@ -26,28 +26,48 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
         }
         else{
             if(tipo == "LW"){
-                Dado* dado = new Dado(Instrucao::LW);
-                m->escrever(posicao, dado);
+                ler >> valor2;
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarLW(valor, valor2));
             }
             if(tipo == "SW"){
-                Dado* dado = new Dado(Instrucao::SW);
-                m->escrever(posicao, dado);
+                ler >> valor2;
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarSW(valor, valor2));
             }
             if(tipo == "J"){
-                Dado* dado = new Dado(Instrucao::J);
-                m->escrever(posicao, dado);
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarJ(valor));
             }
             if(tipo == "BNE"){
-                Dado* dado = new Dado(Instrucao::BNE);
-                m->escrever(posicao, dado);
+                ler >> valor2 >> valor3;
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarBNE(valor, valor2, valor3));
             }
             if(tipo == "BEQ"){
-                Dado* dado = new Dado(Instrucao::BEQ);
-                m->escrever(posicao, dado);
+                ler >> valor2 >> valor3;
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarBEQ(valor, valor2, valor3));
             }
-            if(tipo == "ADD" || tipo =="SUB" || tipo == "MULT" || tipo == "DIV"){
-                Dado* dado = new Dado(Instrucao::TIPO_R);
-                m->escrever(posicao, dado);
+            if(tipo == "ADD"){
+                ler >> valor2 >> valor3;
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarADD(valor, valor2, valor3));
+            }
+            if(tipo =="SUB"){
+                ler >> valor2 >> valor3;
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarSUB(valor, valor2, valor3));
+            }
+            if(tipo == "MULT"){
+                ler >> valor2;
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarMULT(valor, valor2));
+            }
+            if(tipo == "DIV"){
+                ler >> valor2;
+                Instrucao* instrucao;
+                m->escrever(posicao, instrucao->criarDIV(valor, valor2));
             }
         }
         posicao++;
