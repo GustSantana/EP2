@@ -106,7 +106,7 @@ void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
             
             int verificaOP = instrucao->getOpcode();
             if((verificaOP != Instrucao::TIPO_R) && (verificaOP != Instrucao::LW) && (verificaOP != Instrucao::SW) && 
-            (verificaOP != Instrucao::BNE) && (verificaOP != Instrucao::BEQ) && (verificaOP != Instrucao::J) && (verificaOP != NULL))
+            (verificaOP != Instrucao::BNE) && (verificaOP != Instrucao::BEQ) && (verificaOP != Instrucao::J) && (instrucao != NULL))
                 throw new runtime_error ("runtime_error");
         }
     }

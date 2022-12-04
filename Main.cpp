@@ -150,11 +150,13 @@ while(escolha == -1) {
         } catch (runtime_error *e){
             cout << e->what();
             delete e;
+        }
     }
 
     if(escolhido == 0){
         delete controle;
         return 0;
     }
+
 }
 }
