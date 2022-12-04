@@ -60,7 +60,9 @@ void MemoriaRAM::imprimir(){
                 cout << endl;
             }
             else
-                cout << i << ": " << vetorDados[i]->imprimir() << endl;
+                cout << i << ": ";
+                vetorDados[i]->imprimir();
+                cout << endl;
         }
     }
 }
