@@ -21,6 +21,11 @@ class ESMapeadaNaMemoria : public Memoria{
         virtual MemoriaRAM* getMemoriaSubjacente();
         virtual void adicionar(Dispositivo* d);
         virtual vector<Dispositivo*>* getDispositivos();
+
+        int getTamanho();
+        Dado* ler(int posicao);
+        void escrever(int posicao, Dado* d); 
+        void imprimir(); 
 };
 
 #endif // ES_MAPEADA_NA_MEMORIA_H
