@@ -116,8 +116,8 @@ while(escolha == -1) {
             controle->executarInstrucao();
         }
         catch  (logic_error *e) {
-        cout << e->what();
-        return 0;
+            cout << e->what();
+            delete e;
         }
         cout << "Instrucao executada" << endl;
         cout << "PC: " << controle->getPC()<< endl;
