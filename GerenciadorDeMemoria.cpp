@@ -17,63 +17,54 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
     int tamanho, valor, valor2, valor3, posicao = 0;
     string tipo;
 
-    Instrucao* instrucao;
-
     ler >> tamanho;
-    ler >> tipo >> valor;
+    ler >> tipo;
     while(ler){
         if(tipo == "D"){
+            ler >> valor;
             Dado* dado = new Dado(valor);
             m->escrever(posicao, dado);
         }
         else{
             if(tipo == "LW"){
-                ler >> valor2;
-                m->escrever(posicao, instrucao->criarLW(valor, valor2));
-                return;
+                ler >> valor >> valor2;
+                m->escrever(posicao, Instrucao::criarLW(valor, valor2));
             }
             if(tipo == "SW"){
-                ler >> valor2;
-                m->escrever(posicao, instrucao->criarSW(valor, valor2));
-                return;
+                ler >> valor >> valor2;
+                m->escrever(posicao, Instrucao::criarSW(valor, valor2));
             }
             if(tipo == "J"){
-                m->escrever(posicao, instrucao->criarJ(valor));
-                return;
+                ler >> valor;
+                m->escrever(posicao, Instrucao::criarJ(valor));
             }
             if(tipo == "BNE"){
-                ler >> valor2 >> valor3;
-                m->escrever(posicao, instrucao->criarBNE(valor, valor2, valor3));
-                return;
+                ler >> valor >> valor2 >> valor3;
+                m->escrever(posicao, Instrucao::criarBNE(valor, valor2, valor3));
             }
             if(tipo == "BEQ"){
-                ler >> valor2 >> valor3;
-                m->escrever(posicao, instrucao->criarBEQ(valor, valor2, valor3));
-                return;
+                ler >> valor >> valor2 >> valor3;
+                m->escrever(posicao, Instrucao::criarBEQ(valor, valor2, valor3));
             }
             if(tipo == "ADD"){
-                ler >> valor2 >> valor3;
-                m->escrever(posicao, instrucao->criarADD(valor, valor2, valor3));
-                return;
+                ler >> valor >> valor2 >> valor3;
+                m->escrever(posicao, Instrucao::criarADD(valor, valor2, valor3));
             }
             if(tipo =="SUB"){
-                ler >> valor2 >> valor3;
-                m->escrever(posicao, instrucao->criarSUB(valor, valor2, valor3));
-                return;
+                ler >> valor >> valor2 >> valor3;
+                m->escrever(posicao, Instrucao::criarSUB(valor, valor2, valor3));
             }
             if(tipo == "MULT"){
-                ler >> valor2;
-                m->escrever(posicao, instrucao->criarMULT(valor, valor2));
-                return;
+                ler >> valor >> valor2;
+                m->escrever(posicao, Instrucao::criarMULT(valor, valor2));
             }
             if(tipo == "DIV"){
-                ler >> valor2;
-                m->escrever(posicao, instrucao->criarDIV(valor, valor2));
-                return;
+                ler >> valor >> valor2;
+                m->escrever(posicao, Instrucao::criarDIV(valor, valor2));
             }
         }
         posicao++;
-        ler >> tipo >> valor;
+        ler >> tipo;
     }
 
     if(!ler.eof()){
@@ -90,57 +81,45 @@ void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
     for(int i = 0; i < m->getTamanho(); i++){
         if(m->ler(i) == NULL)
             escrever << "-" << endl;
-
-        if(m->ler(i)->getValor() != Instrucao::LW && m->ler(i)->getValor() != Instrucao::SW && m->ler(i)->getValor() != Instrucao::SW && 
-            m->ler(i)->getValor() != Instrucao::J && m->ler(i)->getValor() != Instrucao::BNE && m->ler(i)->getValor() != Instrucao::BEQ &&
-            m->ler(i)->getValor() != Instrucao::TIPO_R)
+        
+        Instrucao *instrucao = dynamic_cast<Instrucao*>(m->ler(i));
+        if(instrucao == NULL)
             escrever << "D " << m->ler(i)->getValor() << endl;
         else{
-            Instrucao *instrucao = dynamic_cast<Instrucao*>(m->ler(i));
-
             if(instrucao->getOpcode() == Instrucao::LW){
                 escrever << "LW " << instrucao->getDestino() << " " << instrucao->getImediato() << endl;
-                return;
             }
             if(instrucao->getOpcode() == Instrucao::SW){
                 escrever << "SW " << instrucao->getDestino() << " " << instrucao->getImediato() <<  endl;
-                return;
             }
 
             if(instrucao->getOpcode() == Instrucao::J){
                 escrever << "J " << instrucao->getImediato() << endl;
-                return;
             }
 
             if(instrucao->getOpcode() == Instrucao::BNE){
                 escrever << "BNE " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << " " << instrucao->getImediato() << endl;
-                return;
             }
 
             if(instrucao->getOpcode() == Instrucao::BEQ){
                 escrever << "BEQ " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << " " << instrucao->getImediato() << endl;
-                return;
             }
 
             if(instrucao->getOpcode() == Instrucao::TIPO_R){
                 if(instrucao->getFuncao() == Instrucao::FUNCAO_ADD){
                     escrever << "ADD " << instrucao->getDestino() << " " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
-                    return;
                 }
 
                 if(instrucao->getFuncao() == Instrucao::FUNCAO_SUB){
                     escrever << "SUB " << instrucao->getDestino() << " " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
-                    return;
                 }
 
                 if(instrucao->getFuncao() == Instrucao::FUNCAO_MULT){
                     escrever << "MULT " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
-                    return;
                 }
 
                 if(instrucao->getFuncao() == Instrucao::FUNCAO_DIV){
                    escrever << "DIV " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
-                    return; 
                 }
             }
 
