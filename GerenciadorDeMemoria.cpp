@@ -25,7 +25,7 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
         throw new runtime_error("runtime_error");
 
     ler >> tipo;
-    while(ler){
+    while(ler && posicao < m->getTamanho()){
         if(tipo == "D"){
             ler >> valor;
             dado = new Dado(valor);
