@@ -111,7 +111,13 @@ while(escolha == -1) {
 
     if(escolhido == 3){
         cout << "PC: " << controle->getPC() << endl;
-        controle->executarInstrucao();
+        try {
+            controle->executarInstrucao();
+        }
+        catch  (invalid_argument *e) {
+        cout << e->what();
+        return 0;
+        }
         cout << "Instrucao executada" << endl;
         cout << "PC: " << controle->getPC()<< endl;
         cout << endl;
@@ -121,7 +127,7 @@ while(escolha == -1) {
         while(controle->getPC() != 0)
             controle->executarInstrucao();
     }
-    
+
     if(escolhido == 5){
         cout << "Arquivo origem: " << arquivoOrigem;
     }
