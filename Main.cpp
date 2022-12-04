@@ -5,6 +5,7 @@
 #include "MonitorDeChar.h"
 #include "ESMapeadaNaMemoria.h"
 #include "UnidadeDeControle.h"
+#include "GerenciadorDeMemoria.h"
 #include <iostream>
 
 using namespace std;
@@ -123,11 +124,26 @@ while(escolha == -1) {
     }
     
     if(escolhido == 5){
-        cout << "Arquivo origem: " << arquivoOrigem;
+        cout << "Arquivo origem: ";
+        cin >> arquivoOrigem;
+        try{
+        GerenciadorDeMemoria* gerenciaMemoria = new GerenciadorDeMemoria();
+        gerenciaMemoria->load(arquivoOrigem, memoriaRam);
+        } catch (runtime_error *e){
+            cout << e->what();
+            delete e;
+        }
     }
 
     if(escolhido == 6){
-        cout << "Arquivo destino: " << arquivoDestino;
+        cout << "Arquivo destino: ";
+        cin >> arquivoDestino;
+        try{
+        GerenciadorDeMemoria* gerenciaMemoria = new GerenciadorDeMemoria();
+        gerenciaMemoria->dump(arquivoDestino, memoriaRam);
+        } catch (runtime_error *e){
+            cout << e->what();
+            delete e;
     }
 
     if(escolhido == 0){
