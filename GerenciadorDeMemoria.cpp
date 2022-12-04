@@ -21,6 +21,9 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
     Dado* dado;
 
     ler >> tamanho;
+    if(tamanho > m->getTamanho())
+        throw new runtime_error("runtime_error");
+
     ler >> tipo;
     while(ler){
         if(tipo == "D"){
@@ -64,6 +67,9 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
             if(tipo == "DIV"){
                 ler >> valor >> valor2;
                 listaDeDados->push_back(Instrucao::criarDIV(valor, valor2));            
+            }
+            if(tipo == "-"){
+                listaDeDados->push_back(NULL);
             }
         }
         posicao++;
