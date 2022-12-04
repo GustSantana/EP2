@@ -89,10 +89,13 @@ void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
         if(m->ler(i) == NULL)
             escrever << "-" << endl;
 
-        Instrucao *instrucao = dynamic_cast<Instrucao*>(m->ler(i));
-        if(instrucao == NULL)
+        if(m->ler(i)->getValor() != Instrucao::LW && m->ler(i)->getValor() != Instrucao::SW && m->ler(i)->getValor() != Instrucao::SW && 
+            m->ler(i)->getValor() != Instrucao::J && m->ler(i)->getValor() != Instrucao::BNE && m->ler(i)->getValor() != Instrucao::BEQ &&
+            m->ler(i)->getValor() != Instrucao::TIPO_R)
             escrever << "D " << m->ler(i)->getValor() << endl;
         else{
+            Instrucao *instrucao = dynamic_cast<Instrucao*>(m->ler(i));
+
             if(instrucao->getOpcode() == Instrucao::LW)
                 escrever << "LW " << instrucao->getDestino() << " " << instrucao->getImediato() << endl;
 
