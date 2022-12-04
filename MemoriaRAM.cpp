@@ -53,13 +53,6 @@ void MemoriaRAM::imprimir(){
             cout << i << ": " << "-" << endl;
         
         else{
-            Instrucao *instrucao = dynamic_cast<Instrucao*>(vetorDados[i]);
-            if(instrucao != NULL){
-                cout << i << ": ";
-                instrucao->imprimir();
-                cout << endl;
-            }
-            else
                 cout << i << ": ";
                 vetorDados[i]->imprimir();
                 cout << endl;
