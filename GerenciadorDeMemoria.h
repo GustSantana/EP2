@@ -5,6 +5,7 @@
 #include <fstream>
 #include "MemoriaRAM.h"
 #include "Instrucao.h"
+#include <list>
 
 using namespace std;
 

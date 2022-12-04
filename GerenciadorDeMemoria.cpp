@@ -17,6 +17,7 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
     int tamanho, valor, valor2, valor3, posicao = 0;
     string tipo;
 
+    list<Dado*>* listaDeDados;
     Dado* dado;
 
     ler >> tamanho;
@@ -25,44 +26,44 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
         if(tipo == "D"){
             ler >> valor;
             dado = new Dado(valor);
-            m->escrever(posicao, dado);
+            listaDeDados->push_back(dado);
         }
         else{
             if(tipo == "LW"){
                 ler >> valor >> valor2;
-                m->escrever(posicao, Instrucao::criarLW(valor, valor2));
+                listaDeDados->push_back(Instrucao::criarLW(valor, valor2));
             }
             if(tipo == "SW"){
                 ler >> valor >> valor2;
-                m->escrever(posicao, Instrucao::criarSW(valor, valor2));
+                listaDeDados->push_back(Instrucao::criarSW(valor, valor2));
             }
             if(tipo == "J"){
                 ler >> valor;
-                m->escrever(posicao, Instrucao::criarJ(valor));
+                listaDeDados->push_back(Instrucao::criarJ(valor));
             }
             if(tipo == "BNE"){
                 ler >> valor >> valor2 >> valor3;
-                m->escrever(posicao, Instrucao::criarBNE(valor, valor2, valor3));
+                listaDeDados->push_back(Instrucao::criarBNE(valor, valor2, valor3));
             }
             if(tipo == "BEQ"){
                 ler >> valor >> valor2 >> valor3;
-                m->escrever(posicao, Instrucao::criarBEQ(valor, valor2, valor3));
+                listaDeDados->push_back(Instrucao::criarBEQ(valor, valor2, valor3));
             }
             if(tipo == "ADD"){
                 ler >> valor >> valor2 >> valor3;
-                m->escrever(posicao, Instrucao::criarADD(valor, valor2, valor3));
+                listaDeDados->push_back(Instrucao::criarADD(valor, valor2, valor3));
             }
             if(tipo =="SUB"){
                 ler >> valor >> valor2 >> valor3;
-                m->escrever(posicao, Instrucao::criarSUB(valor, valor2, valor3));
+                listaDeDados->push_back(Instrucao::criarSUB(valor, valor2, valor3));
             }
             if(tipo == "MULT"){
                 ler >> valor >> valor2;
-                m->escrever(posicao, Instrucao::criarMULT(valor, valor2));
+                listaDeDados->push_back(Instrucao::criarMULT(valor, valor2));
             }
             if(tipo == "DIV"){
                 ler >> valor >> valor2;
-                m->escrever(posicao, Instrucao::criarDIV(valor, valor2));
+                listaDeDados->push_back(Instrucao::criarDIV(valor, valor2));            
             }
         }
         posicao++;
@@ -73,6 +74,8 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
          throw new logic_error ("logic_error");
          ler.close();
     }
+
+    m->escrever(listaDeDados);
 
     ler.close();
 }
