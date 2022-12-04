@@ -83,11 +83,13 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
 void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
     ofstream escrever;
     escrever.open (arquivo, ios_base::app);
+
+    Instrucao *instrucao;
     for(int i = 0; i < m->getTamanho(); i++){
         if(m->ler(i) == NULL)
             escrever << "-" << endl;
         
-        Instrucao *instrucao = dynamic_cast<Instrucao*>(m->ler(i));
+        instrucao = dynamic_cast<Instrucao*>(m->ler(i));
         if(instrucao == NULL)
             escrever << "D " << m->ler(i)->getValor() << endl;
         else{
