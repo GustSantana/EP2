@@ -17,12 +17,14 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
     int tamanho, valor, valor2, valor3, posicao = 0;
     string tipo;
 
+    Dado* dado;
+
     ler >> tamanho;
     ler >> tipo;
     while(ler){
         if(tipo == "D"){
             ler >> valor;
-            Dado* dado = new Dado(valor);
+            dado = new Dado(valor);
             m->escrever(posicao, dado);
         }
         else{
