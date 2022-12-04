@@ -29,45 +29,54 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
                 ler >> valor2;
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarLW(valor, valor2));
+                return;
             }
             if(tipo == "SW"){
                 ler >> valor2;
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarSW(valor, valor2));
+                return;
             }
             if(tipo == "J"){
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarJ(valor));
+                return;
             }
             if(tipo == "BNE"){
                 ler >> valor2 >> valor3;
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarBNE(valor, valor2, valor3));
+                return;
             }
             if(tipo == "BEQ"){
                 ler >> valor2 >> valor3;
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarBEQ(valor, valor2, valor3));
+                return;
             }
             if(tipo == "ADD"){
                 ler >> valor2 >> valor3;
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarADD(valor, valor2, valor3));
+                return;
             }
             if(tipo =="SUB"){
                 ler >> valor2 >> valor3;
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarSUB(valor, valor2, valor3));
+                return;
             }
             if(tipo == "MULT"){
                 ler >> valor2;
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarMULT(valor, valor2));
+                return;
             }
             if(tipo == "DIV"){
                 ler >> valor2;
                 Instrucao* instrucao;
                 m->escrever(posicao, instrucao->criarDIV(valor, valor2));
+                return;
             }
         }
         posicao++;
