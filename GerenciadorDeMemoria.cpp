@@ -100,6 +100,7 @@ void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
     ofstream escrever;
     escrever.open (arquivo, ios_base::app);
 
+    escrever << m->getTamanho() << endl;
     Instrucao *instrucao;
     for(int i = 0; i < m->getTamanho(); i++){
         if(m->ler(i) == NULL)
