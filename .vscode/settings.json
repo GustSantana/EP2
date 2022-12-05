@@ -8,7 +8,8 @@
     "string": "cpp",
     "stdexcept": "cpp",
     "cstddef": "cpp",
-    "istream": "cpp"
+    "istream": "cpp",
+    "new": "cpp"
   },
   "C_Cpp_Runner.cCompilerPath": "gcc",
   "C_Cpp_Runner.cppCompilerPath": "g++",
