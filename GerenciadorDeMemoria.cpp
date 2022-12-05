@@ -35,41 +35,51 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
             if(tipo == "LW"){
                 ler >> valor >> valor2;
                 listaDeDados->push_back(Instrucao::criarLW(valor, valor2));
+                continue;
             }
             if(tipo == "SW"){
                 ler >> valor >> valor2;
                 listaDeDados->push_back(Instrucao::criarSW(valor, valor2));
+                continue;
             }
             if(tipo == "J"){
                 ler >> valor;
                 listaDeDados->push_back(Instrucao::criarJ(valor));
+                continue;
             }
             if(tipo == "BNE"){
                 ler >> valor >> valor2 >> valor3;
                 listaDeDados->push_back(Instrucao::criarBNE(valor, valor2, valor3));
+                continue;
             }
             if(tipo == "BEQ"){
                 ler >> valor >> valor2 >> valor3;
                 listaDeDados->push_back(Instrucao::criarBEQ(valor, valor2, valor3));
+                continue;
             }
             if(tipo == "ADD"){
                 ler >> valor >> valor2 >> valor3;
                 listaDeDados->push_back(Instrucao::criarADD(valor, valor2, valor3));
+                continue;
             }
             if(tipo =="SUB"){
                 ler >> valor >> valor2 >> valor3;
                 listaDeDados->push_back(Instrucao::criarSUB(valor, valor2, valor3));
+                continue;
             }
             if(tipo == "MULT"){
                 ler >> valor >> valor2;
                 listaDeDados->push_back(Instrucao::criarMULT(valor, valor2));
+                continue;
             }
             if(tipo == "DIV"){
                 ler >> valor >> valor2;
-                listaDeDados->push_back(Instrucao::criarDIV(valor, valor2));            
+                listaDeDados->push_back(Instrucao::criarDIV(valor, valor2)); 
+                continue;           
             }
             if(tipo == "-"){
                 listaDeDados->push_back(NULL);
+                continue;
             }
         }
         posicao++;
@@ -77,7 +87,7 @@ void GerenciadorDeMemoria::load(string arquivo, MemoriaRAM* m){
     }
 
     if(!ler.eof()){
-         throw new logic_error ("logic_error");
+         throw new runtime_error ("runtime_error");
          ler.close();
     }
 
@@ -101,38 +111,47 @@ void GerenciadorDeMemoria::dump(string arquivo, MemoriaRAM* m){
         else{
             if(instrucao->getOpcode() == Instrucao::LW){
                 escrever << "LW " << instrucao->getDestino() << " " << instrucao->getImediato() << endl;
+                continue;
             }
             if(instrucao->getOpcode() == Instrucao::SW){
                 escrever << "SW " << instrucao->getDestino() << " " << instrucao->getImediato() <<  endl;
+                continue;
             }
 
             if(instrucao->getOpcode() == Instrucao::J){
                 escrever << "J " << instrucao->getImediato() << endl;
+                continue;
             }
 
             if(instrucao->getOpcode() == Instrucao::BNE){
                 escrever << "BNE " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << " " << instrucao->getImediato() << endl;
+                continue;
             }
 
             if(instrucao->getOpcode() == Instrucao::BEQ){
                 escrever << "BEQ " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << " " << instrucao->getImediato() << endl;
+                continue;
             }
 
             if(instrucao->getOpcode() == Instrucao::TIPO_R){
                 if(instrucao->getFuncao() == Instrucao::FUNCAO_ADD){
                     escrever << "ADD " << instrucao->getDestino() << " " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                    continue;
                 }
 
                 if(instrucao->getFuncao() == Instrucao::FUNCAO_SUB){
                     escrever << "SUB " << instrucao->getDestino() << " " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                    continue;
                 }
 
                 if(instrucao->getFuncao() == Instrucao::FUNCAO_MULT){
                     escrever << "MULT " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                    continue;
                 }
 
                 if(instrucao->getFuncao() == Instrucao::FUNCAO_DIV){
                    escrever << "DIV " << instrucao->getOrigem1() << " " << instrucao->getOrigem2() << endl;
+                   continue;
                 }
             }
 
